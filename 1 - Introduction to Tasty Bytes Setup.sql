@@ -412,3 +412,23 @@ ALTER WAREHOUSE tb_de_wh SET WAREHOUSE_SIZE = 'XSmall';
 
 -- setup completion note
 SELECT 'tb_101 setup is now complete' AS note;
+
+/***************************************************************************************************
+-- 3. Exploring the Tasty Bytes Foundation [ https://quickstarts.snowflake.com/guide/tasty_bytes_introduction/index.html?index=..%2F..index&mkt_tok=MjUyLVJGTy0yMjcAAAGdnGMtcHyzeH06naY9_8vW9KVob9m-xN_MnE_6dtXQdPDOBLXMFcmsfjVaheFdjf9V8ysKCyK88fiwagDzleOT4otv9VP2o2J-jsNEoUQcqxuImwmHCQ#2] 
+USE ROLE sysadmin;
+SHOW DATABASES LIKE 'tb_101';
+SHOW SCHEMAS IN DATABASE tb_101;
+SHOW TABLES IN SCHEMA tb_101.raw_pos;
+SHOW ROLES LIKE 'tb%';
+SHOW WAREHOUSES LIKE 'tb%';
+USE ROLE tb_data_engineer;
+USE WAREHOUSE tb_de_wh;
+
+SELECT
+    m.menu_type_id,
+    m.menu_type,
+    m.truck_brand_name,
+    m.menu_item_name
+FROM tb_101.raw_pos.menu m
+WHERE m.truck_brand_name = 'Plant Palace';
+***************************************************************************************************/
